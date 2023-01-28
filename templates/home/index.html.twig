@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Symfony console{% endblock %}
+
+{% block body %}
+
+<div class="ms-4 jumbotron jumbotron-fluid d-flex mx-auto">
+    <h1 class="display-4 text--static">symfony console make:<span class="display-4 text--dynamic" style="color:green"> </span></h1>
+</div>
+</div>
+<div class ="container-fluid">
+    <div class="row">
+        <div class="col-3 text-wrap" id="fixedNav"><h2 class="mt-3 ms-3 d-flex align-items-center" id="commande">Tapez ici votre commande :</h2>
+            <input class="form-control" type="text" placeholder="Default input" aria-label="votre commande">
+            <button type="button" class="btn btn-info mt-3 d-flex justify-content-center">Info</button>
+        </div>
+        <div class="col-9 offset-3 bg-dark" id="scrollableNav">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula
+        </div>
+    </div>
+</div>
+<script>
+const textElement = document.querySelector(".text--dynamic");
+const wordsArray = ["entity", "controller", "form", "auth", "crud"];
+let arrayLength = wordsArray.length;
+
+let currentLetterCount = 0,
+  currentWordCount = 0,
+  currentText = [],
+  currentWord = "",
+  currentLetter = "",
+  reverse = false;
+
+function typeWriting() {
+  if (currentWordCount <= arrayLength) {
+    if (currentWordCount == arrayLength) {
+      currentWordCount = 0;
+    }
+
+    let letterCount = wordsArray[currentWordCount].length;
+    currentWord = wordsArray[currentWordCount];
+
+    if (!reverse && currentLetterCount < letterCount) {
+      currentLetter = currentWord[currentLetterCount];
+      currentText.push(currentLetter);
+
+      textElement.textContent = currentText.join("");
+      currentLetterCount++;
+      console.log(currentText, currentLetterCount, letterCount);
+    }
+
+    if (reverse && currentLetterCount <= letterCount) {
+      currentText.pop();
+      textElement.textContent = currentText.join("");
+      currentLetterCount--;
+      console.log(currentText, currentLetterCount);
+    }
+
+    if (currentLetterCount == letterCount) {
+      reverse = true;
+    }
+
+    if (reverse && currentLetterCount == 0) {
+      currentText = [];
+      currentWordCount++;
+      reverse = false;
+    }
+  }
+  setTimeout(typeWriting, 300);
+}
+
+window.addEventListener("load", typeWriting);
+
+</script>
+
+{% endblock %}
