@@ -1,5 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Symfony console{% endblock %}
+
+{% block body %}
+
+<div class="jumbotron jumbotron-fluid d-flex mx-auto">
+  <h1 class="display-4 text--static"><a href="/">symfony console</a> <span class="display-4 text--dynamic" style="color:green"> </span></h1>
+</div>
+<div class="container text-center">
+    <div class="row justify-content-center">
+        <div class="col-12"> <!-- Utilisez col-12 pour occuper toute la largeur -->
+            <h1 class="mb-3 mt-3">Créez ici votre commande</h1>
+        </div>
+        <div class="col-6 mx-auto"> <!-- Utilisez mx-auto pour centrer horizontalement -->
+            {{ form_start(form) }}
+            {{ form_row(form.command) }}
+            {{ form_row(form.description) }}
+            {{ form_row(form.image) }}
+            {{ form_row(form.submit) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+
+<script>
 const textElement = document.querySelector(".text--dynamic");
-const wordsArray = ["entity", "controller", "form", "auth", "crud"];
+const wordsArray = ["make:entity", "make:controller", "make:form", "make:auth", "make:crud", "cache:clear"];
 let arrayLength = wordsArray.length;
 
 let currentLetterCount = 0,
@@ -24,14 +50,12 @@ function typeWriting() {
 
       textElement.textContent = currentText.join("");
       currentLetterCount++;
-      // console.log(currentText, currentLetterCount, letterCount);
     }
 
     if (reverse && currentLetterCount <= letterCount) {
       currentText.pop();
       textElement.textContent = currentText.join("");
       currentLetterCount--;
-      // console.log(currentText, currentLetterCount);
     }
 
     if (currentLetterCount == letterCount) {
@@ -44,7 +68,11 @@ function typeWriting() {
       reverse = false;
     }
   }
-  setTimeout(typeWriting, 6000);
+  setTimeout(typeWriting, 150);
 }
 
 window.addEventListener("load", typeWriting);
+
+</script>
+
+{% endblock %}

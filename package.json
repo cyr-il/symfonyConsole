@@ -1,0 +1,27 @@
+{
+  "name": "symfonyconsole",
+  "version": "1.0.0",
+  "description": "Ask the prompt the command and it will give you a description",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cyr-il/symfonyConsole.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cyr-il/symfonyConsole/issues"
+  },
+  "homepage": "https://github.com/cyr-il/symfonyConsole#readme",
+  "devDependencies": {
+    "@hotwired/stimulus": "^3.0.0",
+    "@symfony/ux-autocomplete": "file:vendor/symfony/ux-autocomplete/assets",
+    "tom-select": "^2.2.2"
+  }
+}
